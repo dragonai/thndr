@@ -16,7 +16,8 @@ app.config.from_pyfile('local_settings.py')
 @app.route('/voice', methods=['GET', 'POST'])
 def voice():
     response = twiml.Response()
-    response.say("Hi there. Please shoot us a text instead.")
+    response.say("Hi there. Please shoot us a text with what you're looking" \
+            " for and where you're looking for it.")
     return str(response)
 
 
