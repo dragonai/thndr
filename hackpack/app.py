@@ -8,11 +8,6 @@ from flask import request
 from twilio import twiml
 from twilio.util import TwilioCapability
 
-from googleplaces import GooglePlaces, types, lang
-
-YOUR_API_KEY = 'AIzaSyAcYFIhejT-0Svxc_XOWFmn98hPDtvbHcg'
-google_places = GooglePlaces(YOUR_API_KEY)
-
 
 # Declare and configure application
 app = Flask(__name__, static_url_path='/static')
