@@ -65,7 +65,7 @@ def sms():
             #if (place.rating > y) and (place.rating < x)
             #    y = place.rating
             #    secondbest = place.name
-        response.sms("Thndr suggests " + best + ". It's located at " + addy + ".")
+    response.sms("Thndr suggests " + best + ". It's located at " + addy + ".")
     return str(response)
 
 # Twilio Client demo template
