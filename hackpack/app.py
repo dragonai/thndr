@@ -34,7 +34,7 @@ def voice():
 def sms():
     response = twiml.Response()
     body = request.form['Body']
-    first = body.find("best") + 5
+    first = body.find("Best") + 5
     last = 0
     if "in" in body:
         last = body.find("in") - 1
