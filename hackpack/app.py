@@ -34,11 +34,11 @@ def sms():
     response = twiml.Response()
     body = request.form['Body']
 
-    loc = body.find('in') + 3
+    loc = body.find("in") + 3
 
-    if 'pizza' in body:
+    if "pizza" in body:
         query_result = google_places.nearby_search(
-            location=body[loc:], keyword='pizza',
+            location=body[loc:], keyword="pizza",
             radius=200000, types=[types.TYPE_FOOD])
         place = query_result.places[0]
         response.sms(place.name)
