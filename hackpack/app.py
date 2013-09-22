@@ -34,30 +34,39 @@ def voice():
 def sms():
     response = twiml.Response()
     body = request.form['Body']
-    if "pizza" in body:
-        loc = 0
-        if "in" in body:
-            loc = body.find("in") + 3
-        if "near" in body:
-            loc = body.find("near") + 5
-        query_result = google_places.nearby_search(
-            location=body[loc:], keyword="pizza",
-            radius=30000, types=[types.TYPE_FOOD])
-        x = 0
+    first = body.find("best") + 5
+    last = 0
+    if "in" in body:
+        last = body.find("in") - 1
+    if "near" in body:
+        last = body.find("near") -1
+
+    item = body[first:last]
+    
+    loc = 0
+    if "in" in body:
+        loc = body.find("in") + 3
+    if "near" in body:
+        loc = body.find("near") + 5
+    query_result = google_places.nearby_search(
+        location=body[loc:], keyword=item,
+        radius=30000, types=[types.TYPE_FOOD])
+    x = 0
         #y = 0
-        best = ""
-        addy = ""
+    best = ""
+    addy = ""
         #secondbest = ""
-        for place in query_result.places:
-            if place.rating > x:
-                x = place.rating
-                best = place.name
-                place.get_details()
-                addy = place.formatted_address
+    for place in query_result.places:
+        if place.rating > x:
+            x = place.rating
+            best = place.name
+            place.get_details()
+            addy = place.formatted_address
             #if (place.rating > y) and (place.rating < x)
             #    y = place.rating
             #    secondbest = place.name
-        response.sms("Thndr suggests " + best + ". It's located at " + addy + ".")
+    response.sms("Thndr suggests " + best + ". It's located at " + addy + ".")
+'''
     if "burger" in body:
         loc = 0
         if "in" in body:
@@ -83,7 +92,7 @@ def sms():
             #    secondbest = place.name
         response.sms("Thndr suggests " + best + ". It's located at " + addy + ".")
     return str(response)
-
+'''
 
 # Twilio Client demo template
 @app.route('/client')
