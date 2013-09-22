@@ -55,7 +55,7 @@ def sms():
         loc = body.find("in") + 3
         query_result = google_places.nearby_search(
             location=body[loc:], keyword="burger",
-            radius=30000, types=[types.TYPE_FOOD])
+            radius=20000, types=[types.TYPE_FOOD])
         x = 0
         #y = 0
         best = ""
