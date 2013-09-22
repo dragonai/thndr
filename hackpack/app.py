@@ -59,15 +59,18 @@ def sms():
         x = 0
         #y = 0
         best = ""
+        addy = ""
         #secondbest = ""
         for place in query_result.places:
             if place.rating > x:
                 x = place.rating
                 best = place.name
+                place.get_details()
+                addy = place.formatted_address
             #if (place.rating > y) and (place.rating < x)
             #    y = place.rating
             #    secondbest = place.name
-        response.sms("Thndr suggests " + best + ".")
+        response.sms("Thndr suggests " + best + ". It's located at " + addy + ".")
     return str(response)
 
 
