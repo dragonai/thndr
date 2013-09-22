@@ -38,7 +38,24 @@ def sms():
         loc = body.find("in") + 3
         query_result = google_places.nearby_search(
             location=body[loc:], keyword="pizza",
-            radius=20000, types=[types.TYPE_FOOD])
+            radius=30000, types=[types.TYPE_FOOD])
+        x = 0
+        #y = 0
+        best = ""
+        #secondbest = ""
+        for place in query_result.places:
+            if place.rating > x:
+                x = place.rating
+                best = place.name
+            #if (place.rating > y) and (place.rating < x)
+            #    y = place.rating
+            #    secondbest = place.name
+        response.sms("Thndr suggests " + best + ".")
+    if "burger" in body:
+        loc = body.find("in") + 3
+        query_result = google_places.nearby_search(
+            location=body[loc:], keyword="burger",
+            radius=30000, types=[types.TYPE_FOOD])
         x = 0
         #y = 0
         best = ""
