@@ -26,10 +26,12 @@ def voice():
 def sms():
     response = twiml.Response()
     body = request.form['Body']
-    if body == "Test":
-        response.sms("Hey dude - test worked.")
+    if "Alex" in body:
+        response.sms("Hey Alex - test worked.")
+    else if "Wahaj" in body:
+        response.sms("Hey Wahaj - test worked.")
     else:
-        response.sms("Yo.  No idea wtf you're talking about.")
+        response.sms("Go away, I don't know you.")
     return str(response)
 
 
