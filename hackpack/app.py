@@ -33,10 +33,8 @@ def voice():
 def sms():
     response = twiml.Response()
     body = request.form['Body']
-
-    loc = body.find("in") + 3
-
     if "pizza" in body:
+        loc = body.find("in") + 3
         query_result = google_places.nearby_search(
             location=body[loc:], keyword="pizza",
             radius=200000, types=[types.TYPE_FOOD])
