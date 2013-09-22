@@ -8,6 +8,13 @@ from flask import request
 from twilio import twiml
 from twilio.util import TwilioCapability
 
+from googleplaces import GooglePlaces, types, lang
+
+YOUR_API_KEY = 'AIzaSyAcYFIhejT-0Svxc_XOWFmn98hPDtvbHcg'
+google_places = GooglePlaces(YOUR_API_KEY)
+
+
+
 # Declare and configure application
 app = Flask(__name__, static_url_path='/static')
 app.config.from_pyfile('local_settings.py')
@@ -27,11 +34,18 @@ def voice():
 def sms():
     response = twiml.Response()
     body = request.form['Body']
+    if "pizza" in body:
+        loc = body.find("in") + 3
+        query_result = google_places.nearby_search(
+            location=body[loc:], keyword="pizza",
+            radius=200000, types=[types.TYPE_FOOD])
+        place = query_result.places[0]
+        response.sms(place.name)
     
-    if "Alex" in body:
-        response.sms("Hey Alex - test worked.")
-    else:
-        response.sms("Go away.")
+#    if "Alex" in body:
+#        response.sms("Hey Alex - test worked.")
+#    else:
+#        response.sms("Go away.")
     return str(response)
 
 
