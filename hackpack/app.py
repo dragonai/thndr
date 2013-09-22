@@ -34,9 +34,9 @@ def sms():
     response = twiml.Response()
     body = request.form['Body']
 
-    loc = body.find('in') + 2
+    loc = body.find('in') + 3
 
-    if "pizza" in body:
+    if 'pizza' in body:
         query_result = google_places.nearby_search(
             location=body[loc:], keyword='pizza',
             radius=200000, types=[types.TYPE_FOOD])
@@ -47,7 +47,7 @@ def sms():
 #        response.sms("Hey Alex - test worked.")
 #    else:
 #        response.sms("Go away.")
-#    return str(response)
+    return str(response)
 
 
 # Twilio Client demo template
