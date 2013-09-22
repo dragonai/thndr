@@ -39,8 +39,13 @@ def sms():
         query_result = google_places.nearby_search(
             location=body[loc:], keyword="pizza",
             radius=200000, types=[types.TYPE_FOOD])
-        place = query_result.places[0]
-        response.sms(place.name)
+        x = 0
+        best = ""
+        for place in query_result.places:
+            if place.rating > x:
+                x = place.rating
+                best = place.name
+        response.sms(best)
     
 #    if "Alex" in body:
 #        response.sms("Hey Alex - test worked.")
