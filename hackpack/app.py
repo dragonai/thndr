@@ -8,6 +8,15 @@ from flask import request
 from twilio import twiml
 from twilio.util import TwilioCapability
 
+from googleplaces import GooglePlaces, types, lang
+
+YOUR_API_KEY = 'AIzaSyAcYFIhejT-0Svxc_XOWFmn98hPDtvbHcg'
+google_places = GooglePlaces(YOUR_API_KEY)
+#Google Places code
+query_result = google_places.nearby_search(
+        location='London, England', keyword='Fish and Chips',
+        radius=20000, types=[types.TYPE_FOOD])
+
 # Declare and configure application
 app = Flask(__name__, static_url_path='/static')
 app.config.from_pyfile('local_settings.py')
@@ -28,7 +37,8 @@ def sms():
     response = twiml.Response()
     body = request.form['Body']
     if "Alex" in body:
-        response.sms("Hey Alex - test worked.")
+        for place in query_result.places:
+            response.sms(place.name)
     elif "Wahaj" in body:
         response.sms("Yo Wahaj, we good.")
     else:
