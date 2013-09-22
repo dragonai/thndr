@@ -47,10 +47,10 @@ def sms():
             if place.rating > x:
                 x = place.rating
                 best = place.name
-            #if (place.rating > y) and (place.rating < x)
-            #    y = place.rating
-            #    secondbest = place.name
-        response.sms("Thndr suggests " + best + ".")
+            if (place.rating > y) and (place.rating < x)
+                y = place.rating
+                secondbest = place.name
+        response.sms("Thndr suggests " + best + " or " + secondbest + "!")
     return str(response)
 
 
