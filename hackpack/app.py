@@ -50,7 +50,7 @@ def sms():
             #if (place.rating > y) and (place.rating < x)
             #    y = place.rating
             #    secondbest = place.name
-        response.sms("Thndr suggests " + best".")
+        response.sms("Thndr suggests " + best + ".")
     return str(response)
 
 
