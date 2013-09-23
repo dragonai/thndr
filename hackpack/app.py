@@ -36,10 +36,12 @@ def sms():
     body = request.form['Body']
     first = body.find("Best") + 5
     last = 0
-    if "in" in body:
-        last = body.find("in") - 1
-    if "near" in body:
-        last = body.find("near") -1
+    if " in " in body:
+        last = body.find(" in ")
+    if " near " in body:
+        last = body.find(" near ")
+    if " at " in body:
+        last = body.find(" at ")    
 
     item = body[first:last]
     
