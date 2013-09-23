@@ -50,10 +50,12 @@ def sms():
     item = body[first:last]
     
     loc = 0
-    if "in" in body:
-        loc = body.find("in") + 3
-    if "near" in body:
-        loc = body.find("near") + 5
+    if " in " in body:
+        loc = body.find(" in ") + 4
+    if " near " in body:
+        loc = body.find(" near ") + 6
+    if " at " in body:
+        loc = body.find(" at ") + 4
     query_result = google_places.nearby_search(
         location=body[loc:], keyword=item,
         radius=16000, types=[types.TYPE_FOOD])
