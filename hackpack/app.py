@@ -10,7 +10,7 @@ from twilio.util import TwilioCapability
 
 from googleplaces import GooglePlaces, types, lang
 
-YOUR_API_KEY = 'AIzaSyAcYFIhejT-0Svxc_XOWFmn98hPDtvbHcg'
+YOUR_API_KEY = 'x'
 google_places = GooglePlaces(YOUR_API_KEY)
 
 
