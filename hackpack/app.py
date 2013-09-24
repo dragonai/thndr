@@ -34,6 +34,7 @@ def voice():
 def sms():
     response = twiml.Response()
     body = request.form['Body']
+    ##some ghetto, hackathon-level NLP going on here
     if "fox say" in body:
         response.sms("Go away.")
         return str(response)
