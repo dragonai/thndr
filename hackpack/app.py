@@ -76,13 +76,11 @@ def sms():
             #if (place.rating > y) and (place.rating < x)
             #    y = place.rating
             #    secondbest = place.name
-    response.sms("Thndr suggests " + best + ". It's located at " + addy + ".")
-    #if (str(response) == "Thndr suggests . It's located at ."):
-    #    response.sms("Ah crap. It seems Thndr couldn't locate a good place for " \
-    #           "ya. Try a different search, perhaps?")
-    #    return str(response)
     if(best == "") or (addy == ""):
-        response.sms("Ah crap.")
+        response.sms("Ah crap. It seems Thndr couldn't locate a good place for " \
+                     "ya. Try a different search, perhaps?")
+        return str(response)
+    response.sms("Thndr suggests " + best + ". It's located at " + addy + ".")
     return str(response)
 
 # Twilio Client demo template
