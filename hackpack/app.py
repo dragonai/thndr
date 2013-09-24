@@ -78,8 +78,9 @@ def sms():
             #    secondbest = place.name
     response.sms("Thndr suggests " + best + ". It's located at " + addy + ".")
     if (str(response) == "Thndr suggests . It's located at ."):
-        return "Ah crap. It seems Thndr couldn't locate a good place for " \
-               "ya. Try a different search, perhaps?"
+        response.sms("Ah crap. It seems Thndr couldn't locate a good place for " \
+               "ya. Try a different search, perhaps?")
+        return str(response)
     return str(response)
 
 # Twilio Client demo template
