@@ -34,6 +34,9 @@ def voice():
 def sms():
     response = twiml.Response()
     body = request.form['Body']
+    if "fox say" in body:
+        response.sms("Go away.")
+        return str(response)
     first = 0;
     if "Best" in body:
         first = body.find("Best") + 5
