@@ -77,8 +77,7 @@ def sms():
             #    y = place.rating
             #    secondbest = place.name
     if(best == "") or (addy == ""):
-        response.sms("Ah crap. It seems Thndr couldn't locate a good place for " \
-                     "ya. Try a different search, perhaps?")
+        response.sms("Ah crap. It seems Thndr couldn't locate a good place for ya. Try a different search, perhaps?")
         return str(response)
     response.sms("Thndr suggests " + best + ". It's located at " + addy + ".")
     return str(response)
